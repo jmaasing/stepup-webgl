@@ -1,0 +1,17 @@
+.nav {
+    display: inline ;
+}
+
+ul.nav {
+    padding: 0;
+}
+
+li.nav {
+    padding: 0 0.5em ;
+}
+
+.renderer {
+    width: 800px;
+    height: 500px;
+    background-color: teal ;
+}

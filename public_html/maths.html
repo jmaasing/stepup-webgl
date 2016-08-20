@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+This file is copyright 2016 by Johan Maasing <johan@zoom.nu>
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<html>
+    <head>
+        <title>Web GL</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+    </head>
+    <body>
+        <div>
+            <img src="img/logo.png" />
+        </div>
+        <p>Some mathematical concepts that are helpful in 3D graphics.</p>
+        <h1>Trigonometry</h1>
+        <a title="By Webysther (Own work) [CC BY-SA 4.0 (http://creativecommons.org/licenses/by-sa/4.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AWebysther_20160305_-_Ciclo_trigonom%C3%A9trico.svg"><img width="512" alt="Webysther 20160305 - Ciclo trigonométrico" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Webysther_20160305_-_Ciclo_trigonom%C3%A9trico.svg/512px-Webysther_20160305_-_Ciclo_trigonom%C3%A9trico.svg.png"/></a>
+        <h1>Matrices</h1>
+        <p>A nice way to write equations that 'have something in common'.</p>
+
+        <p>For example, say that we want to rotate a point [x,y] through an angle.</p>
+        <div>
+            <code>x' = x * some_operation1(angle)</code><br>
+            <code>y' = y * some_operation2(angle)</code>
+        </div>
+        <p>This would be the rotation matrix.</p>
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/50622f9a4a7ba2961f5df5f7e0882983cf2f1d2f">
+
+
+        <h2>Multiplication</h2>
+        <a title="By File:Matrix multiplication diagram.svg:User:Bilou See below. [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AMatrix_multiplication_diagram_2.svg"><img width="256" alt="Matrix multiplication diagram 2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Matrix_multiplication_diagram_2.svg/256px-Matrix_multiplication_diagram_2.svg.png"/></a>
+        
+        <p>If the target is row 2 and column 3:</p>
+        <ol>
+            <li>Take the first element from row 2 of A, multiply by the first element of column 3 of B.</li>
+            <li>Take the second element from row 2 of A, multiply by the second element of column 3 of B.</li>
+            <li>...</li>
+            <li>Sum it up</li>
+        </ol>
+        <p>So we end up with:</p>
+        <div>
+            <code>x' = x*cos(angle) - y*sin(angle)</code><br>
+            <code>y' = x*sin(angle) + y*cos(angle)</code>
+        </div>
+		
+		<h2>Yes but why matrices?</h2>
+		<p>A matrix can be used to describe rotation, translation and scaling. Matrices can be multiplied to represent a series of such transformations. Imagine if you have a turret on a tank. You can use one matrix to describe the rotation of the turret relative to the tank body. Another matrix to describe the rotation of the tank body relative to the ground and multiply them together to get the turret rotation relative to the ground.</p>
+		<p>In fact matrices are so useful matrix math is often implemented in hardware on GPUs.</p>
+</html>

@@ -1,0 +1,74 @@
+<!--
+This file is copyright 2016 by Johan Maasing <johan@zoom.nu>
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<html>
+    <head>
+        <title>Demo 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script src="js/three.min.js"></script>
+        <script src="js/demo2.js"></script>
+
+        <script>
+			$(document).ready(function () {
+				$('#menu').load('menu.html');
+			});
+        </script>            
+
+    </head>
+    <body class="container">
+        <h1>Demo 2</h1>
+        <nav id="menu"></nav>
+        <div class="renderer" id="canvas">
+        </div>
+		<h1>ThreeJS terminology</h1>
+        <ul>
+			<li>Scene Graph</li>
+            <li>Geometries</li>
+            <li>Materials</li>
+			<li>Mesh</li>
+            <li>Lights</li>
+            <li>Camera</li>
+		</ul>
+		<h2>Scene graph</h2>
+		A scene is a tree structure with a root and children. The tree consists of Object3D-instances. Each object has a transformation matrix.
+
+		<h2>Geometries</h2>
+		<p>A geometry holds all data necessary to describe a 3D model. Example: Box, Dodocaheron. The structure of an object</p>
+
+		<h2>Materials</h2>
+		<p>Materials describe the appearance of objects: Is it shiny, is it green, does it have a texture image.</p>
+
+		<h2>Mesh</h2>
+		<p>In ThreeJS a Mesh is an <code>Object3D</code> consisting of a <code>geometry</code> and a <code>material</code>.</p>
+
+		<pre><code>
+var mesh = new THREE.Mesh( geometry, material );
+scene.add( mesh );
+</code></pre>
+		
+		<h2>Lights</h2>
+		<p>In graphics programming lights are strange abstractions. In practice the <code>material</code> of an object determines what <code>fragment shader</code> program to use. The shader program colors the pixels on the screen by calculating the color using information about the material and the lights in the scene. So a light is more of an abstract description of a light source.</p>
+		
+		<p>Light calculations can be pretty complex but the simpler variants are called <i>Lambert</i> or <i>Phong</i></p>
+		<p>Lambert shading is evaluated per vertex of the mesh. It is very fast but does not look very glossy.</p>
+		<p>Phong shading looks smoother since it is calculated per pixel. It can look 'shiny'.</p>
+
+		<h2>Camera</h2>
+		<p>A camera in this context does not simulate a physical. It is simply a mathematical description of the eye position and view direction.</p>
+    </body>
+</html>
