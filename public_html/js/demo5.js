@@ -21,12 +21,14 @@ $(document).ready(function () {
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     var renderer = new THREE.WebGLRenderer();
+    var a = 0 ;
 
     renderer.setSize(width, height);
     rendererContainer.append(renderer.domElement);
 
     var loader = new THREE.ColladaLoader();
     var logo = null;
+    var middleE = null ;
     // load a resource
     loader.load(
             // resource URL
@@ -35,6 +37,15 @@ $(document).ready(function () {
                     function (object) {
                         scene.add(object.scene);
                         logo = object.scene;
+                        logo.rotation.x = 0 ;
+                        if (logo.children) {
+                            for (var e = 0; e<logo.children.length; e++) {
+                                var name = logo.children[e].name ;
+                                if (name && name === "E-Circle-Curve") {
+                                    middleE = logo.children[e] ;
+                                }
+                            }
+                        }
                     }
             );
 
@@ -50,8 +61,12 @@ $(document).ready(function () {
                 requestAnimationFrame(render);
                 renderer.render(scene, camera);
                 if (logo) {
-                    logo.rotation.x += 0.01;
-                    logo.rotation.y += 0.0001;
+                    // logo.rotation.z += 0.01;
+                    logo.rotation.y += 0.001;
+                }
+                if (middleE) {
+                    middleE.rotation.z = Math.sin(a) ;
+                    a += 0.01 ;
                 }
             }
             render();

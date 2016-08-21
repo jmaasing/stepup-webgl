@@ -21,6 +21,7 @@ $(document).ready(function () {
 	var scene = new THREE.Scene();
 	var camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 	var renderer = new THREE.WebGLRenderer();
+        var cubes = [] ;
 
 	renderer.setSize(width, height);
 	rendererContainer.append(renderer.domElement);
@@ -49,6 +50,7 @@ $(document).ready(function () {
 				cube.position.y = ypos;
 				cube.position.z = zpos;
 				gridroot.add(cube);
+                                cubes.push(cube) ;
 			}
 		}
 	}
@@ -57,6 +59,9 @@ $(document).ready(function () {
 		requestAnimationFrame(render);
 		renderer.render(scene, camera);
 		gridroot.rotation.y += 0.01;
+                for (var n=0; n<cubes.length; n++) {
+                    cubes[n].rotation.x += n / 20000 ;
+                }
 	}
 
 	function componentToHex(c) {
